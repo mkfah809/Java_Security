@@ -2,14 +2,14 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <title>dashboard</title>
-<h1> Dashboard </h1>
+<h1>Dashboard</h1>
 </head>
 <!-- 	<3lshan ana 3ndy csrf enabled f lazem logout as post request fi form -->
 <p>Hi there [[${user.userName}]]</p>
 <form action="/logout" method="POST">
 	<input type="hidden" th:name="${_csrf.parameterName}"
-		th:value="${_csrf.token}" /> 
-		<button type="submit">Logout </button>
+		th:value="${_csrf.token}" />
+	<button type="submit">Logout</button>
 </form>
 <!-- 	lazem disbale el csrf fil login page law 3ayz a3mel el <a></a> -->
 <a href="/logout">logout</a>

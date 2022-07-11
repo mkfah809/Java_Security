@@ -10,33 +10,39 @@ import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 public class Authorities implements GrantedAuthority {
-	private static final long serialVersionUID = 1L;
-	private Long AuthId;
-	private String authority;
-	private User user;
-	@ManyToOne
-	public User getUser() {
-		return user;
-	}
+  private static final long serialVersionUID = 1L;
+  
+  
+  private Long id;
+  private String authority;
+  private User user;
+  
+  @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+  public Long getId() {
+    return id;
+  }
+  
+  public void setId(Long id) {
+    this.id = id;
+  }
+  
+  @Override
+  public String getAuthority() {
+    return authority;
+  }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+  public void setAuthority(String authority) {
+    this.authority = authority;
+  }
 
-	public String getAuthority() {
-		return authority;
-	}
+  // one-to-one (1-1), one-to-many (1-*), many-to-many (*-*)
+  
+  @ManyToOne
+  public User getUser() {
+    return user;
+  }
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getAuthId() {
-		return AuthId;
-	}
-
-	public void setAuthId(Long authId) {
-		AuthId = authId;
-	}
+  public void setUser(User user) {
+    this.user = user;
+  }
 }
